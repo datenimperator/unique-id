@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["git@kontakt.software-consultant.net"]
   spec.summary       = %q{An ActiveRecord extension which creates unique, sequentially numbered values.}
   spec.description   = %q{This extension creates values which can be used for invoice numbers, personnel numbers and the like.}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/datenimperator/unique-id"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
