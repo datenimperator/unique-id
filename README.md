@@ -6,7 +6,7 @@ This ActiveRecord extension keeps track of number ranges and easily creates vali
 * INV-0002
 * INV-0002
 
-That's what UniqueId does.
+That's what UniqueId does. It support multiple independent number ranges, each of them can be scoped and formatted as needed.
 
 ## Installation
 
@@ -26,7 +26,7 @@ Or install it yourself as:
 
 Create a database attribute which will hold the id, and activate unique_id to use it:
 
-````
+````ruby
 class Invoice
   has_unique :inv_id
 end
@@ -36,7 +36,7 @@ In this example, `inv_id` is the attribute of our model `Invoice` which will hol
 
 There are some options that can be set. These are the defaults:
 
-````
+````ruby
 class Invoice
   has_unique :inv_id,
   	start: 1,
@@ -53,7 +53,7 @@ Numbering starts with this value for each number range. Can be set per model.
 
 A number is guaranteed to be unique within a *scope*. While the default is blank, this could be used for revolving number ranges, eg. to start over the numbers each year:
 
-````
+````ruby
 class Invoice
   has_unique :inv_id,
   	scoped_by: proc { Time.now.year }
@@ -66,7 +66,7 @@ The scope will be set to the return value of the proc and will be evaluated ever
 
 By default a unique_id will simple be an integer value. You can define a formatter to make it look however you like:
 
-````
+````ruby
 class Invoice
   has_unique :inv_id,
   	formatter: proc { |scope, value| sprintf("INV-%04d", value) }
