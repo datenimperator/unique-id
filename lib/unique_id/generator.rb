@@ -22,7 +22,7 @@ module Unique
     end
 
     def next(opts)
-      _scope = opts[:scope]
+      _scope = opts[:scope].nil? ? nil : opts[:scope].to_s
       _type  = opts[:type]
 
       table = Arel::Table.new(:unique_ids)
