@@ -29,7 +29,8 @@ module Unique
       query = table
         .project( table[:value].maximum.as('v1') )
         .where( table[:type].eq(_type).and(table[:scope].eq(_scope)) )
-      max = ActiveRecord::Base.connection.execute(query.to_sql).first['v1']
+      result = ActiveRecord::Base.connection.execute(query.to_sql).first
+      max = result.is_a?(Hash) ? result['v1'] : result[0]
 
       next_value = max.nil? ? @opts[:start] : max.to_i + 1
 
