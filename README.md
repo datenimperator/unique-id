@@ -24,6 +24,14 @@ Or install it yourself as:
 
     $ gem install unique_id
 
+### Requirements
+
+The gem has been tested with these configurations:
+
+* MRI Ruby 1.9.3, 2.0.0 and 2.1.1
+* sqlite3, mySQL or PostgreSQL
+* ActiveRecord 3.1 and higher
+
 ## Usage
 
 Create a database attribute which will hold the id, and activate unique_id to use it:
