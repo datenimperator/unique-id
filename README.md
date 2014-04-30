@@ -1,5 +1,7 @@
 # UniqueId
 
+[![Build Status](https://travis-ci.org/datenimperator/unique-id.svg?branch=master)](https://travis-ci.org/datenimperator/unique-id)
+
 This ActiveRecord extension keeps track of number ranges and easily creates valid sequential formatted identifiers which could be used for invoices, orders, personnel numbers and the like. Did you ever want to generate invoice IDs like this?
 
 * INV-0001
