@@ -25,5 +25,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "combustion"
   spec.add_development_dependency "acts_as_fu"
   spec.add_development_dependency "rspec-rails"
-  spec.add_development_dependency "sqlite3"
 end
