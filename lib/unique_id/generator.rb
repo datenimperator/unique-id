@@ -31,12 +31,12 @@ module Unique
         .where( table[:type].eq(_type).and(table[:scope].eq(_scope)) )
       max = ActiveRecord::Base.connection.execute(query.to_sql).first['v1']
 
-      next_value = max.nil? ? @opts[:start] : max + 1
+      next_value = max.nil? ? @opts[:start] : max.to_i + 1
 
       ins_query = table.create_insert
-      ins_query.into :unique_ids
+      ins_query.into table
       ins_query.insert table[:type]=>_type, table[:scope]=>_scope, table[:value]=>next_value
-      result = ActiveRecord::Base.connection.insert(ins_query, 'SQL', nil, next_value)
+      result = ActiveRecord::Base.connection.insert(ins_query, nil, nil, next_value)
       raise "Unexpected result: #{result}" unless result == next_value
 
       next_value
