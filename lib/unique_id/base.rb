@@ -4,10 +4,6 @@ module UniqueId
   module Base
     extend ActiveSupport::Concern
 
-    included do
-      before_create :generate_unique
-    end
-
     def unique_type
       self.class.to_s
     end
@@ -40,7 +36,10 @@ module UniqueId
       def has_unique(*args)
         opts = args.extract_options!
         @unique = ::Unique::Generator.new(args.first, opts)
+
+        before_create :generate_unique
       end
+
     end
   end
 end
